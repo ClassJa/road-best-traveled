@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#main-header {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    color: white;
+    background-color: #A6D2EB;
+    height: 70px;
+    margin-bottom: 30px;
+}
+
+#form-main {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    width: 200px;
+    height: 500px;
+    background-color: #A6D2EB;
+}
+
+#form-main fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
