@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+    min-height: 100vh;
+}
+
 #main-header {
     display: flex;
     align-items: center;
@@ -100,4 +104,37 @@
     border: solid 10px #A6D2EB;
 }
 
-@media 
+#footer {
+    display: flex;
+    position: sticky;
+    margin-top: 10px;
+    top: 100%;
+    order: 5;
+    align-items: center;
+    color: white;
+    background-color: #A6D2EB;
+    height: 140px;
+    font-size: 20px;
+}
+ 
+/*added responsiveness */
+@media screen and (max-width: 690px) {
+    #main {
+        flex-direction: column;
+        align-items: center;
+    }
+    #content-container, #form-main {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    #form-main {
+        margin-bottom: 20px;
+    }
+    #main-header h1 {
+        font-size: 30px;
+    }
+    #main-header {
+        padding: 0;
+        justify-content: center;
+    }
+}
