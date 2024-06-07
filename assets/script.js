@@ -1,15 +1,12 @@
 let keyword = prompt("Enter your desired agency")
+const formSearch = document.querySelector('label')
 
 const APIKey = "f+m7/YyogybRKvTgVDkyYCL5ScgVxx8KL49/DEOPiJE="
-// const selects = $("#selects");
-// const selectsTwo =$("#selectsTwo")
-// const searchInput = $('#search-input');
-// const fetchButton = $('button')
 
-keyword.toLowerCase()
+keyword.toLowerCase
 
 function getApi() {
-    const requestUrl = `https://developer.usajobs.gov/codelist/agencysubelements/Search?q=${keyword}`;
+    const requestUrl = `https://developer.usajobs.gov/codelist/agencysubelements/Search?Keyword=${keyword}`;
   
     fetch(requestUrl, {
         method: "GET",
@@ -18,9 +15,11 @@ function getApi() {
         }}
     )
       .then(function (response) {
-        if (!ok) {
+        if (!response.ok) {
+            console.log("Error")
             throw new Error(`HTTP error! Status: ${Response.status}`);
         }
+        console.log("Response Okay")
         return response.json();
 
       })
@@ -31,3 +30,9 @@ function getApi() {
     
       });
   }
+
+  formSearch.addEventListener('click', getApi)
+
+
+
+//   blocker, no error messages are being logged even though dev tools icon show errors
