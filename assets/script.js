@@ -1,24 +1,105 @@
-const APIKey = "f+m7/YyogybRKvTgVDkyYCL5ScgVxx8KL49/DEOPiJE="
-const selects = $("#selects");
-const selectsTwo =$("#selectsTwo")
-const searchInput = $('#search-input');
-const fetchButton = $('button')
 
-function getApi() {
-    const requestUrl = 'https://data.usajobs.gov/api/codelist/agencysubelements';
-  
-    fetch(requestUrl, {
+let keyword = prompt("Enter your desired agency")
+const formSearch = document.querySelector('label')
+const APIKey = "f+m7/YyogybRKvTgVDkyYCL5ScgVxx8KL49/DEOPiJE="
+const agencyDrop = document.getElementById("agencyDrop");
+const searchInput = document.getElementById('search-input');
+const fetchButton = document.getElementById('button')
+const typeDrop = document.getElementById('typeDrop')
+
+const agencyUrl = 'https://data.usajobs.gov/api/codelist/agencysubelements';
+const agencyList = [];
+const jobType = ['Full-time', 'Part-time', 'Shift Work', 'Intermittent','Job sharing','Multiple'];
+
+//keyword.toLowerCase
+
+function getDropDown() {
+
+  fetch(agencyUrl, {
         method: "GET",
         headers: {                  
             "Authorization-Key": APIKey      
         }}
     )
-      .then(function (response) {
-        return response.json();
+    .then(function (response) {
+      return response.json();
+    })
+
+    .then((data) => {
+        console.log(data);
+        agencyList.push(data.CodeList[0].ValidValue)
+        console.log(agencyList)
+        return(agencyList)
       })
 
       .then(function (data) {
-        console.log(data);
+        
+        for (let i = 0; i < agencyList[0].length; i++) {
+        const agency = agencyList[0][i]
+
+        const div = document.createElement('option');
+       
+        div.setAttribute("agencyID", agency.Code)
+        div.textContent = agency.Value
+       
+        agencyDrop.appendChild(div)
+        
+      }})
+
+      function jobDrop (){
+        console.log(jobType)
+        for (let i = 0; i < jobType.length; i++) {
+          const type = jobType[i]
+  
+          const div = document.createElement('option');
+         
+          div.setAttribute("job", i+1)
+          div.textContent = type
+         
+          typeDrop.appendChild(div)
+      }}
+      jobDrop()
+}
+
+function getApi() {
+    const requestUrl = `https://developer.usajobs.gov/codelist/agencysubelements/Search?Keyword=${keyword}`
+
+  
+    fetch(requestUrl, {
+
+        method: "GET",
+        headers: {                  
+            "Authorization-Key": APIKey      
+        }}
+    )
     
-      });
-  }
+      .then(function (response) {
+        if (!response.ok) {
+            console.log("Error")
+            throw new Error(`HTTP error! Status: ${Response.status}`);
+        }
+        console.log("Response Okay")
+        return response.json();
+
+      })
+
+      .then((data) => {
+        console.log(data);
+      })
+
+        return data
+    
+      }
+  
+  
+   window.addEventListener("load", (event) => {
+      getDropDown()
+     });
+
+  formSearch.addEventListener('click', getApi)
+
+
+
+//   blocker, no error messages are being logged even though dev tools icon show errors
+
+
