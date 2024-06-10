@@ -4,23 +4,25 @@ const formSearch = document.querySelector('label')
 const APIKey = "f+m7/YyogybRKvTgVDkyYCL5ScgVxx8KL49/DEOPiJE="
 const agencyDrop = document.getElementById("agencyDrop");
 const searchInput = document.getElementById('search-input');
-const fetchButton = document.getElementB('button')
+const fetchButton = document.getElementById('button')
 
 const agencyUrl = 'https://data.usajobs.gov/api/codelist/agencysubelements';
 const agencyList = [];
 
-keyword.toLowerCase
+//keyword.toLowerCase
 
 function getDropDown() {
 
   fetch(agencyUrl, {
-      > main
         method: "GET",
         headers: {                  
             "Authorization-Key": APIKey      
         }}
     )
-    
+    .then(function (response) {
+      return response.json();
+    })
+
     .then((data) => {
         console.log(data);
         agencyList.push(data.CodeList[0].ValidValue)
@@ -29,7 +31,6 @@ function getDropDown() {
       })
 
       .then(function (data) {
-        agencyDrop.innerHTML = '';
         
         for (let i = 0; i < agencyList.length; i++) {
         const agency = agencyList[i]
@@ -37,7 +38,7 @@ function getDropDown() {
         const div = document.createElement('option');
        
         div.setAttribute("agencyID", agency[i].Code)
-        div.textContent =  agency[i].Value
+        div.textContent = agency[i].Value
        
         agencyDrop.appendChild(div)
         
@@ -72,8 +73,8 @@ function getApi() {
 
         return data
     
-      });
-  }
+      }
+  
   
    window.addEventListener("load", (event) => {
       getDropDown()
