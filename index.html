@@ -4,47 +4,50 @@
         <title>Road Best Traveled</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="./assets/stylesheet.css">
+        <script src="https://cdn.tailwindcss.com"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
     <body>
-        <header id="main-header">
-            <h1 id="header-title">The Road Best Traveled</h1>
+        <header id="main-header" class="items-center mb-9 pl-5">
+            <h1 id="header-title" class="text-4xl">The Road Best Traveled</h1>
         </header>
 
-        <main id="main">
+        <main id="main" class="justify-between">
             <div id="form-div">
-                <form id="form-main">
-                    <fieldset>
-                        <label for="search-input" id="label">Search</label>
-                        <input type="text" id="search-input">
-                        <label for="selects" id="label">Dropdown</label>
-                        <select id="agencyDrop">
+
+                <form id="form-main" class="justify-between flex-col ml-12 p-5">
+                    <fieldset class="flex-col">
+                        <label for="search-input" id="label" class="text-2xl mb-3">Search</label>
+                        <input type="text" id="search-input" class="mb-8 pl-2">
+                        <label for="selects" id="label" class="text-lg mb-3">Dropdown</label>
+                        <select id="agencyDrop" class="mb-9 selects">
                             <option>test</option>
                             <option>test</option>
                             <option>test</option>
                         </select>
-                        <label for="selects" id="label">Dropdown</label>
-                        <select class='selects' id="selects">
+
+                        <label for="selects" id="label" class="text-lg mb-3">Dropdown</label>
+                        <select id="selects" class="mb-9">
                             <option>test</option>
                             <option>test</option>
                             <option>test</option>
                         </select>
                     </fieldset>
     
-                    <fieldset id="button-fieldset">
-                        <input type="submit" id="submit-btn">
-                        <button id="clear-btn">Clear</button>
+                    <fieldset id="button-fieldset" class="flex-col items-center ">
+                        <input type="submit" id="submit-btn" class="text-2xl mb-6 hover:opacity-80">
+                        <button id="clear-btn" class="text-lg hover:opacity-80">Clear</button>
                     </fieldset>
                 </form>
             </div>
 
-            <div id="content-container">
+            <div id="content-container" class="mr-12 ml-3">
                 <div id="content-list"></div>
             </div>
         </main>
 
-        <footer>
+        <footer id="footer" class="mt-3 items-center">
 
         </footer>
 
