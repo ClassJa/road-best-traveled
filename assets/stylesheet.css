@@ -83,6 +83,10 @@ body {
     background-color: #A6D2EB;
     height: 140px;
 }
+
+#agencyDrop {
+    width: 100%;
+}
  
 /*added responsiveness */
 @media screen and (max-width: 690px) {
