@@ -68,7 +68,7 @@ body {
 }
 
 #select-modal {
-    visibility: visible;
+    visibility: hidden;
 }
 
 

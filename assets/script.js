@@ -8,14 +8,15 @@ submit.addEventListener('click', showModal)
 
 function showModal(event) {
   event.preventDefault
-  if ((modal.getAttribute('class')) === 'hidden') {
-    modal.classList.remove('hidden')
-    // submit.setAttribute('class', 'visible')
-  } else {
-    modal.classList.add('hidden')
-    console.log(' O ')
-    // modal.setAttribute('visibility', 'hidden')
-  }
+  modal.setAttribute('style', 'visibility: visible')
+  // if ((modal.getAttribute('class')) === 'hidden') {
+  //   modal.classList.remove('hidden')
+  //   // submit.setAttribute('class', 'visible')
+  // } else {
+  //   modal.classList.add('hidden')
+  //   console.log(' O ')
+  //   // modal.setAttribute('visibility', 'hidden')
+  // }
 }
 
 
