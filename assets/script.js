@@ -1,5 +1,6 @@
 const modalPopUp = document.querySelector('#label')
 const modal = document.querySelector('#select-modal')
+const closeB = document.querySelector('.show')
 
 const submit = document.querySelector('#submit-btn')
 
@@ -17,6 +18,12 @@ function showModal(event) {
   //   console.log(' O ')
   //   // modal.setAttribute('visibility', 'hidden')
   // }
+}
+
+closeB.addEventListener('click', closeBtn)
+function closeBtn(event){
+  event.preventDefault
+  modal.setAttribute('style', 'visibility: hidden')
 }
 
 
