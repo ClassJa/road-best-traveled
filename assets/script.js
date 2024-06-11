@@ -1,22 +1,22 @@
-<<<<<<< HEAD
 const modalPopUp = document.querySelector('#label')
-const modal = document.querySelector('modal-pop-up')
+const modal = document.querySelector('#select-modal')
 
-const submit = document.querySelector('submit-btn')
+const submit = document.querySelector('#submit-btn')
 
 submit.addEventListener('click', showModal)
 
 
 function showModal(event) {
   event.preventDefault
-  if (submit.getAttribute('visibility') === 'hidden') {
-    modal.setAttribute('visibility', 'visible')
+  if ((modal.getAttribute('class')) === 'hidden') {
+    modal.classList.remove('hidden')
+    // submit.setAttribute('class', 'visible')
   } else {
-    console.log('')
+    modal.classList.add('hidden')
+    console.log(' O ')
     // modal.setAttribute('visibility', 'hidden')
   }
 }
-=======
 
 
 const formSearch = document.querySelector('label')
@@ -131,4 +131,3 @@ function getApi() {
 //   blocker, no error messages are being logged even though dev tools icon show errors
 
 
->>>>>>> 129d817bab55940de9595b1c3852e04d31242f12
