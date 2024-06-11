@@ -6,12 +6,13 @@ const agencyDrop = document.getElementById("agencyDrop");
 const searchInput = document.getElementById('search-input');
 const fetchButton = document.getElementById('submit-btn')
 const typeDrop = document.getElementById('typeDrop')
+const contentEl = document.getElementById('content-list')
 
 const agencyUrl = 'https://data.usajobs.gov/api/codelist/agencysubelements';
 const searchUrl ='https://data.usajobs.gov/api/search?'
 const agencyList = [];
 const jobType = ['Full-time', 'Part-time', 'Shift Work', 'Intermittent','Job sharing','Multiple'];
-
+const resultArray = []
 //keyword.toLowerCase
 
 function getDropDown() {
@@ -54,7 +55,7 @@ function getDropDown() {
   
           const div = document.createElement('option');
          
-          div.setAttribute("job", i+1)
+          div.setAttribute("id", i+1)
           div.textContent = type
          
           typeDrop.appendChild(div)
@@ -67,12 +68,15 @@ function getApi() {
   const agency = agencyDrop
   const agencyOption = agency.options[agency.selectedIndex];
   const agencyOptionId = agencyOption.id;
-  const type = typeDrop.value;
+  const type = typeDrop
+  const typeOption = type.options[type.selectedIndex];
+  const typeOptionId = typeOption.id;
   console.log(keyword)
   console.log(agencyOptionId);
-  console.log(type)
-  const requestUrl = searchUrl+"&keyword="+keyword+'&Organization='+agency
-  +"&PositionSchedule="+type
+  console.log(typeOptionId)
+  const requestUrl = searchUrl+"&keyword="+keyword+'&Organization='+agencyOptionId
+  +"&PositionSchedule="+typeOptionId
+  console.log(requestUrl)
   
     fetch(requestUrl, {
 
@@ -93,9 +97,28 @@ function getApi() {
       })
 
       .then((data) => {
+        resultArray.push(data.SearchResult.SearchResultItems);
         console.log(data);
+        console.log(resultArray)
       })
 
+      .then(function(data) {
+        for (let i = 0; i < 25; i++) {
+          const result = resultArray[0][i]
+      
+          const div = document.createElement('div');
+          const h3 =  document.createElement('h3');
+          const location = document.createElement('p')
+          
+          div.setAttribute("id", result)
+          h3.textContent = result.MatchedObjectDescriptor.PositionTitle
+          location.textContent = result.MatchedObjectDescriptor.PositionLocationDisplay
+          location.setAttribute('lat', )
+
+          contentEl.appendChild(div)
+          div.appendChild(h3)
+          div.appendChild(location)
+      }})
     
       }
   
