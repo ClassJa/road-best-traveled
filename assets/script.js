@@ -11,6 +11,15 @@ const agencyUrl = 'https://data.usajobs.gov/api/codelist/agencysubelements';
 const agencyList = [];
 const jobType = ['Full-time', 'Part-time', 'Shift Work', 'Intermittent','Job sharing','Multiple'];
 
+function getStorage () {
+  const storage = JSON.parse(localStorage.getItem('storage')) || [];
+  return history;
+}
+
+function saveStorage () {
+  localStorage.setItem('storage', JSON.stringify(storage));
+}
+
 //keyword.toLowerCase
 
 function getDropDown() {
