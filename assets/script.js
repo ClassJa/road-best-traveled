@@ -64,10 +64,12 @@ function getDropDown() {
 
 function getApi() {
   const keyword = searchInput.value
-  const agency = agencyDrop.value
-  const type = typeDrop.object
+  const agency = agencyDrop
+  const agencyOption = agency.options[agency.selectedIndex];
+  const agencyOptionId = agencyOption.id;
+  const type = typeDrop.value;
   console.log(keyword)
-  console.log(agency)
+  console.log(agencyOptionId);
   console.log(type)
   const requestUrl = searchUrl+"&keyword="+keyword+'&Organization='+agency
   +"&PositionSchedule="+type
@@ -106,8 +108,6 @@ function getApi() {
   fetchButton.addEventListener('click', function(event){
     getApi()
   })
-
-
 
 //   blocker, no error messages are being logged even though dev tools icon show errors
 
