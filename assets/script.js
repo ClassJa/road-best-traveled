@@ -95,7 +95,7 @@ function getApi() {
         return response.json();
 
       })
-
+    
       .then((data) => {
         resultArray.push(data.SearchResult.SearchResultItems);
         console.log(data);
@@ -103,18 +103,20 @@ function getApi() {
       })
 
       .then(function(data) {
-        for (let i = 0; i < 25; i++) {
+        contentEl.innerhtml='';
+        for (let i = 0; i < resultArray[0].length; i++) {
           const result = resultArray[0][i]
       
           const div = document.createElement('div');
           const h3 =  document.createElement('h3');
-          const location = document.createElement('p')
+          const location = document.createElement('p');
           
           div.setAttribute("id", result)
           h3.textContent = result.MatchedObjectDescriptor.PositionTitle
           location.textContent = result.MatchedObjectDescriptor.PositionLocationDisplay
-          location.setAttribute('lat', )
-
+          location.setAttribute('lat', result.MatchedObjectDescriptor.PositionLocation[0].Latitude)
+          location.setAttribute('lon', result.MatchedObjectDescriptor.PositionLocation[0].Longitude)
+        
           contentEl.appendChild(div)
           div.appendChild(h3)
           div.appendChild(location)
@@ -122,13 +124,37 @@ function getApi() {
     
       }
   
-  
+      function jobCard (data) {
+        contentEl.innerhtml='';
+        for (let i = 0; i < resultArray[0].length; i++) {
+          const result = resultArray[0][i]
+      
+          const div = document.createElement('div');
+          const h3 =  document.createElement('h3');
+          const description = document.createElement('p')
+          const location = document.createElement('p');
+          const appLink =document.createElement('a')
+          
+          div.setAttribute("id", result)
+          h3.textContent = result.MatchedObjectDescriptor.PositionTitle
+          description.textContent = result.MatchedObjectDescriptor.UserArea.Details.JobSummary
+          location.textContent = result.MatchedObjectDescriptor.PositionLocationDisplay
+          location.setAttribute('lat', result.MatchedObjectDescriptor.PositionLocation[0].Latitude)
+          location.setAttribute('lon', result.MatchedObjectDescriptor.PositionLocation[0].Longitude)
+          appLink.setAttribute('href=', )
+        
+          contentEl.appendChild(div)
+          div.appendChild(h3)
+          div.appendChild(location)
+      }}
+      
    window.addEventListener("load", (event) => {
       getDropDown()
 
      });
 
   fetchButton.addEventListener('click', function(event){
+    
     getApi()
   })
 
