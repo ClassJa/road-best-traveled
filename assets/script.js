@@ -8,7 +8,7 @@ const fetchButton = document.getElementById('submit-btn')
 const typeDrop = document.getElementById('typeDrop')
 
 const agencyUrl = 'https://data.usajobs.gov/api/codelist/agencysubelements';
-const searchUrl ='https://data.usajobs.gov/api/search'
+const searchUrl ='https://data.usajobs.gov/api/search?'
 const agencyList = [];
 const jobType = ['Full-time', 'Part-time', 'Shift Work', 'Intermittent','Job sharing','Multiple'];
 
@@ -40,7 +40,7 @@ function getDropDown() {
 
         const div = document.createElement('option');
        
-        div.setAttribute("agencyID", agency.Code)
+        div.setAttribute("id", agency.ParentCode)
         div.textContent = agency.Value
        
         agencyDrop.appendChild(div)
@@ -63,9 +63,14 @@ function getDropDown() {
 }
 
 function getApi() {
-  const keyword = searchInput.input
+  const keyword = searchInput.value
+  const agency = agencyDrop.value
+  const type = typeDrop.object
   console.log(keyword)
-  const requestUrl = searchUrl+"&keyword="+keyword
+  console.log(agency)
+  console.log(type)
+  const requestUrl = searchUrl+"&keyword="+keyword+'&Organization='+agency
+  +"&PositionSchedule="+type
   
     fetch(requestUrl, {
 
@@ -89,13 +94,13 @@ function getApi() {
         console.log(data);
       })
 
-        return data
     
       }
   
   
    window.addEventListener("load", (event) => {
       getDropDown()
+
      });
 
   fetchButton.addEventListener('click', function(event){
