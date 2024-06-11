@@ -1,13 +1,14 @@
 
-let keyword = prompt("Enter your desired agency")
+
 const formSearch = document.querySelector('label')
 const APIKey = "f+m7/YyogybRKvTgVDkyYCL5ScgVxx8KL49/DEOPiJE="
 const agencyDrop = document.getElementById("agencyDrop");
 const searchInput = document.getElementById('search-input');
-const fetchButton = document.getElementById('button')
+const fetchButton = document.getElementById('submit-btn')
 const typeDrop = document.getElementById('typeDrop')
 
 const agencyUrl = 'https://data.usajobs.gov/api/codelist/agencysubelements';
+const searchUrl ='https://data.usajobs.gov/api/search'
 const agencyList = [];
 const jobType = ['Full-time', 'Part-time', 'Shift Work', 'Intermittent','Job sharing','Multiple'];
 
@@ -62,8 +63,9 @@ function getDropDown() {
 }
 
 function getApi() {
-    const requestUrl = `https://developer.usajobs.gov/codelist/agencysubelements/Search?Keyword=${keyword}`
-
+  const keyword = searchInput.input
+  console.log(keyword)
+  const requestUrl = searchUrl+"&keyword="+keyword
   
     fetch(requestUrl, {
 
@@ -96,7 +98,9 @@ function getApi() {
       getDropDown()
      });
 
-  formSearch.addEventListener('click', getApi)
+  fetchButton.addEventListener('click', function(event){
+    getApi()
+  })
 
 
 
