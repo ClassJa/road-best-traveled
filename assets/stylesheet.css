@@ -91,6 +91,14 @@
     outline: none;
 }
 
+#select-modal {
+    visibility: visible;
+}
+
+#modal-pop-up {
+    visibility: hidden;
+}
+
 #content-container {
     width: 85%;
     height: 520px;
