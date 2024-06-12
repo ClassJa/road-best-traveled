@@ -4,14 +4,17 @@ const closeB = document.querySelector('.show')
 
 const submit = document.querySelector('#submit-btn')
 
-submit.addEventListener('click', showModal)
+// submit.addEventListener('click', showModal)
+
+// uncomment above
+// change the button so it attaches to the specific job not the submit button 
 
 
 function showModal(event) {
   event.preventDefault
   modal.setAttribute('style', 'visibility: visible')
   // collect user input from select agency, job type and populates the jobs in the modal 
-  
+
   // if ((modal.getAttribute('class')) === 'hidden') {
   //   modal.classList.remove('hidden')
   //   // submit.setAttribute('class', 'visible')
@@ -136,7 +139,10 @@ function getApi() {
         for (let i = 0; i < resultArray[0].length; i++) {
           const result = resultArray[0][i]
       
-          const div = document.createElement('div');
+          // const div = document.createElement('div');
+          const div = document.createElement('button');
+          div.setAttribute('class', 'job-styling')
+
           const h3 =  document.createElement('h3');
           const location = document.createElement('p');
           
@@ -158,11 +164,12 @@ function getApi() {
         for (let i = 0; i < resultArray[0].length; i++) {
           const result = resultArray[0][i]
       
-          const div = document.createElement('div');
+          const div = document.createElement('button');
+          // div.setAttribute('class', 'job-styling')
           const h3 =  document.createElement('h3');
           const description = document.createElement('p')
           const location = document.createElement('p');
-          const appLink =document.createElement('a')
+          const appLink = document.createElement('a')
           
           div.setAttribute("id", result)
           h3.textContent = result.MatchedObjectDescriptor.PositionTitle
@@ -183,8 +190,10 @@ function getApi() {
      });
 
   fetchButton.addEventListener('click', function(event){
+
     
     getApi()
+
   })
 
 //   blocker, no error messages are being logged even though dev tools icon show errors

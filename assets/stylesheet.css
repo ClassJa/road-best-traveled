@@ -11,6 +11,21 @@ body {
     left: 300px;
     top: 80px;
 }
+.job-styling {
+    background-color: rgb(214, 214, 214);
+    color: black;
+    border-bottom: 10px;
+    display: block;
+    margin: 10px;
+    border-radius: 5px;
+    text-wrap: wrap;
+    width: 600px;
+    position: relative;
+    left: 20%;
+    overflow: auto;
+    /* justify-items: center; */
+
+}
 
 .text-gray-500 {
     display: flex;
