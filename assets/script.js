@@ -144,6 +144,7 @@ function getApi() {
           div.setAttribute('class', 'job-styling')
 
           const h3 =  document.createElement('h3');
+          h3.setAttribute('class', 'bold-letters')
           const location = document.createElement('p');
           
           div.setAttribute("id", result)

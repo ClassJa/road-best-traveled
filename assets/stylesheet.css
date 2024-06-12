@@ -12,6 +12,7 @@ body {
     top: 80px;
 }
 .job-styling {
+    font-weight: 300;
     background-color: rgb(214, 214, 214);
     color: black;
     border-bottom: 10px;
@@ -22,9 +23,17 @@ body {
     width: 600px;
     position: relative;
     left: 20%;
+    border: 2px solid #A6D2EB;
     /* overflow: auto; */
 
+}
 
+.bold-letters {
+    font-weight: bold;
+}
+
+.job-title {
+    
 }
 
 .text-gray-500 {
