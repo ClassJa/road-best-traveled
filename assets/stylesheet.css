@@ -22,8 +22,8 @@ body {
     width: 600px;
     position: relative;
     left: 20%;
-    overflow: auto;
-    /* justify-items: center; */
+    /* overflow: auto; */
+
 
 }
 
@@ -32,6 +32,11 @@ body {
     justify-content: center;
 }
 
+
+#content-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 #main-header {
     display: flex;
     color: white;
