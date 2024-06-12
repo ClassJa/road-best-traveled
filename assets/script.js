@@ -4,10 +4,13 @@ const closeB = document.querySelector('.show')
 
 const submit = document.querySelector('#submit-btn')
 
-// submit.addEventListener('click', showModal)
 
-// uncomment above
-// change the button so it attaches to the specific job not the submit button 
+function showModalForJob(event){
+  event.preventDefault()
+  modal.setAttribute('style', 'visibility: visible')
+}
+
+// jobBtn.addEventListener('click', showModalForJob)
 
 
 function showModal(event) {
@@ -15,14 +18,6 @@ function showModal(event) {
   modal.setAttribute('style', 'visibility: visible')
   // collect user input from select agency, job type and populates the jobs in the modal 
 
-  // if ((modal.getAttribute('class')) === 'hidden') {
-  //   modal.classList.remove('hidden')
-  //   // submit.setAttribute('class', 'visible')
-  // } else {
-  //   modal.classList.add('hidden')
-  //   console.log(' O ')
-  //   // modal.setAttribute('visibility', 'hidden')
-  // }
 }
 
 closeB.addEventListener('click', closeBtn)
@@ -166,13 +161,14 @@ function getApi() {
           const result = resultArray[0][i]
       
           const div = document.createElement('button');
-          // div.setAttribute('class', 'job-styling')
           const h3 =  document.createElement('h3');
           const description = document.createElement('p')
           const location = document.createElement('p');
           const appLink = document.createElement('a')
           
-          div.setAttribute("id", result)
+          div.setAttribute("id", JSON.stringify(result))
+          const jobBtn = document.getElementById(JSON.stringify(i))
+
           h3.textContent = result.MatchedObjectDescriptor.PositionTitle
           description.textContent = result.MatchedObjectDescriptor.UserArea.Details.JobSummary
           location.textContent = result.MatchedObjectDescriptor.PositionLocationDisplay
@@ -183,7 +179,12 @@ function getApi() {
           contentEl.appendChild(div)
           div.appendChild(h3)
           div.appendChild(location)
+
+      
       }}
+
+
+  
       
    window.addEventListener("load", (event) => {
       getDropDown()
