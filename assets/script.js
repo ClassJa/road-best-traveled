@@ -1,3 +1,30 @@
+const modalPopUp = document.querySelector('#label')
+const modal = document.querySelector('#select-modal')
+const closeB = document.querySelector('.show')
+
+const submit = document.querySelector('#submit-btn')
+
+
+function showModalForJob(event){
+  event.preventDefault()
+  modal.setAttribute('style', 'visibility: visible')
+}
+
+// jobBtn.addEventListener('click', showModalForJob)
+
+
+function showModal(event) {
+  event.preventDefault
+  modal.setAttribute('style', 'visibility: visible')
+  // collect user input from select agency, job type and populates the jobs in the modal 
+
+}
+
+closeB.addEventListener('click', closeBtn)
+function closeBtn(event){
+  event.preventDefault
+  modal.setAttribute('style', 'visibility: hidden')
+}
 
 
 const formSearch = document.querySelector('label')
@@ -107,8 +134,12 @@ function getApi() {
         for (let i = 0; i < resultArray[0].length; i++) {
           const result = resultArray[0][i]
       
-          const div = document.createElement('div');
+          // const div = document.createElement('div');
+          const div = document.createElement('button');
+          div.setAttribute('class', 'job-styling')
+
           const h3 =  document.createElement('h3');
+          h3.setAttribute('class', 'bold-letters')
           const location = document.createElement('p');
           
           div.setAttribute("id", result)
@@ -130,13 +161,15 @@ function getApi() {
         for (let i = 0; i < resultArray[0].length; i++) {
           const result = resultArray[0][i]
       
-          const div = document.createElement('div');
+          const div = document.createElement('button');
           const h3 =  document.createElement('h3');
           const description = document.createElement('p')
           const location = document.createElement('p');
-          const appLink =document.createElement('a')
+          const appLink = document.createElement('a')
           
-          div.setAttribute("id", result)
+          div.setAttribute("id", JSON.stringify(result))
+          const jobBtn = document.getElementById(JSON.stringify(i))
+
           h3.textContent = result.MatchedObjectDescriptor.PositionTitle
           description.textContent = result.MatchedObjectDescriptor.UserArea.Details.JobSummary
           location.textContent = result.MatchedObjectDescriptor.PositionLocationDisplay
@@ -147,7 +180,12 @@ function getApi() {
           contentEl.appendChild(div)
           div.appendChild(h3)
           div.appendChild(location)
+
+      
       }}
+
+
+  
       
    window.addEventListener("load", (event) => {
       getDropDown()
@@ -155,8 +193,10 @@ function getApi() {
      });
 
   fetchButton.addEventListener('click', function(event){
+
     
     getApi()
+
   })
 
 
