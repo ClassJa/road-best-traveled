@@ -7,6 +7,11 @@ body {
     min-height: 100vh;
 }
 
+#map {
+    height: 300px;
+    width: 300px
+}
+
 .relative {
     left: 300px;
     top: 80px;
