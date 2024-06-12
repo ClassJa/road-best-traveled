@@ -1,3 +1,30 @@
+const modalPopUp = document.querySelector('#label')
+const modal = document.querySelector('#select-modal')
+const closeB = document.querySelector('.show')
+
+const submit = document.querySelector('#submit-btn')
+
+
+function showModalForJob(event){
+  event.preventDefault()
+  modal.setAttribute('style', 'visibility: visible')
+}
+
+// jobBtn.addEventListener('click', showModalForJob)
+
+
+function showModal(event) {
+  event.preventDefault
+  modal.setAttribute('style', 'visibility: visible')
+  // collect user input from select agency, job type and populates the jobs in the modal 
+
+}
+
+closeB.addEventListener('click', closeBtn)
+function closeBtn(event){
+  event.preventDefault
+  modal.setAttribute('style', 'visibility: hidden')
+}
 
 
 const formSearch = document.querySelector('label')
@@ -107,6 +134,7 @@ function getApi() {
       })
     
       .then((data) => {
+
         resultArray.length = 0
         resultArray.unshift(data.SearchResult.SearchResultItems);
         console.log(data);
@@ -118,11 +146,18 @@ function getApi() {
         for (let i = 0; i < resultArray[0].length; i++) {
           const result = resultArray[0][i]
       
-          const div = document.createElement('div');
+          // const div = document.createElement('div');
+          const div = document.createElement('button');
+          div.setAttribute('class', 'job-styling')
+
           const h3 =  document.createElement('h3');
+          h3.setAttribute('class', 'bold-letters')
           const location = document.createElement('p');
           
-          div.setAttribute("id", result.MatchedObjectId)
+
+          div.setAttribute("id", result)
+          h3.setAttribute('data-jobId', result.MatchedObjectId)
+
           h3.textContent = result.MatchedObjectDescriptor.PositionTitle
           location.textContent = result.MatchedObjectDescriptor.PositionLocationDisplay
           location.setAttribute('lat', result.MatchedObjectDescriptor.PositionLocation[0].Latitude)
@@ -140,13 +175,15 @@ function getApi() {
         for (let i = 0; i < resultArray[0].length; i++) {
           const result = resultArray[0][i]
       
-          const div = document.createElement('div');
+          const div = document.createElement('button');
           const h3 =  document.createElement('h3');
           const description = document.createElement('p')
           const location = document.createElement('p');
-          const appLink =document.createElement('a')
+          const appLink = document.createElement('a')
           
-          div.setAttribute("id", result)
+          div.setAttribute("id", JSON.stringify(result))
+          const jobBtn = document.getElementById(JSON.stringify(i))
+
           h3.textContent = result.MatchedObjectDescriptor.PositionTitle
           description.textContent = result.MatchedObjectDescriptor.UserArea.Details.JobSummary
           location.textContent = result.MatchedObjectDescriptor.PositionLocationDisplay
@@ -157,8 +194,10 @@ function getApi() {
           contentEl.appendChild(div)
           div.appendChild(h3)
           div.appendChild(location)
+
         }
     }
+
       
    window.addEventListener("load", (event) => {
       getDropDown()
@@ -242,6 +281,40 @@ console.log(previousArray)
       }})
     
       }
+
+    
+    getApi()
+
+  })
+
+
+  document.querySelector('#content-container').addEventListener('click', function(event) {
+      if (event.target.tagName === 'H3') {
+        console.log(event.target.getAttribute('data-jobid'))
+        const job = resultArray[0].find(function (result) {
+          console.log(result[0])
+          return  event.target.getAttribute('data-jobid') === result.MatchedObjectId;
+        })
+
+        console.log(job);
+        console.log(job.MatchedObjectDescriptor.PositionTitle)
+        console.log(job.MatchedObjectDescriptor.UserArea.Details.JobSummary)
+
+        var map = L.map('map').setView([job.MatchedObjectDescriptor.positionLocaation.Latitude, job.MatchedObjectDescriptor.positionLocaation.Latitude], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+
+  }})
+
+  // var map = L.map('map').setView([var, var]), var);
+
+  // var map = L.map('map').setView([51.505, -0.09], 13);
+
+
+
 //   blocker, no error messages are being logged even though dev tools icon show errors
 
 
