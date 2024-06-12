@@ -43,7 +43,7 @@ function getDropDown() {
 
         const div = document.createElement('option');
        
-        div.setAttribute("id", agency.Code)
+        div.setAttribute("id", agency.ParentCode)
         div.textContent = agency.Value
        
         agencyDrop.appendChild(div)
@@ -171,7 +171,7 @@ function getApi() {
   })
 
   prevButton.addEventListener('click', function(event){
-    getLocal()
+   
     getPrev()
   })
 
@@ -181,15 +181,15 @@ function getApi() {
 
  function getLocal(){
   const previousArray = localStorage.getItem('previousArray')
-  JSON.parse(previousArray)
-  console.log(previousArray)
+  
  }
 
 function getPrev() {
-  const keyword = previousArray.keyword
-  const agencyOptionId = previousArray.agencyOptionId
-  const typeOptionId = previousArray.typeOptionId
-
+  const previousArray = JSON.parse(localStorage.getItem('previousArray'))
+  const keyword = previousArray[0].keyword
+  const agencyOptionId = previousArray[0].agencyOptionId
+  const typeOptionId = previousArray[0].typeOptionId
+console.log(previousArray)
   console.log(keyword)
   
   const prevUrl = searchUrl+"&keyword="+keyword+'&Organization='+agencyOptionId
