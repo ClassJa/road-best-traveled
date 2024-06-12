@@ -7,6 +7,46 @@ body {
     min-height: 100vh;
 }
 
+#map {
+    height: 300px;
+    width: 300px
+}
+
+.relative {
+    left: 300px;
+    top: 80px;
+}
+.job-styling {
+    font-weight: 300;
+    background-color: rgb(214, 214, 214);
+    color: black;
+    border-bottom: 10px;
+    display: block;
+    margin: 10px;
+    border-radius: 5px;
+    text-wrap: wrap;
+    width: 600px;
+    position: relative;
+    left: 20%;
+    border: 2px solid #A6D2EB;
+    /* overflow: auto; */
+
+}
+
+.bold-letters {
+    font-weight: bold;
+}
+
+.text-gray-500 {
+    display: flex;
+    justify-content: center;
+}
+
+
+#content-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 #main-header {
     display: flex;
     color: white;
@@ -75,6 +115,11 @@ body {
     border-radius: 5px;
     outline: none;
 }
+
+#select-modal {
+    visibility: hidden;
+}
+
 
 #content-container {
     width: 85%;
