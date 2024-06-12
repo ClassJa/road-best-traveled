@@ -208,12 +208,24 @@ function getApi() {
           return  event.target.getAttribute('data-jobid') === result.MatchedObjectId;
         })
 
+        const jobTitleLocation = document.querySelector('#js-job-title');
+        const jobDescription = document.querySelector('#job-description-text')
+        const modal = document.querySelector('#select-modal')
+
+        modal.setAttribute('style', 'visibility: visible');
+        jobTitleLocation.textContent = job.MatchedObjectDescriptor.PositionTitle;
+        jobDescription.textContent = job.MatchedObjectDescriptor.UserArea.Details.JobSummary;
+      
+
+
         console.log(job);
         console.log(job.MatchedObjectDescriptor.PositionTitle)
         console.log(job.MatchedObjectDescriptor.UserArea.Details.JobSummary)
 
-        var map = L.map('map').setView([job.MatchedObjectDescriptor.positionLocaation.Latitude, job.MatchedObjectDescriptor.positionLocaation.Latitude], 13);
+        var map = L.map('map').setView([job.MatchedObjectDescriptor.PositionLocation[0].Latitude, job.MatchedObjectDescriptor.PositionLocation[0].Longitude], 13);
 
+
+        
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -221,9 +233,15 @@ function getApi() {
 
   }})
 
-  // var map = L.map('map').setView([var, var]), var);
+   // var map = L.map('map').setView([51.505, -0.09], 13);
 
-  // var map = L.map('map').setView([51.505, -0.09], 13);
+   /*
+   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+*/
+
 
 
 //   blocker, no error messages are being logged even though dev tools icon show errors
