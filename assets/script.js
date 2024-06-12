@@ -10,6 +10,8 @@ submit.addEventListener('click', showModal)
 function showModal(event) {
   event.preventDefault
   modal.setAttribute('style', 'visibility: visible')
+  // collect user input from select agency, job type and populates the jobs in the modal 
+  
   // if ((modal.getAttribute('class')) === 'hidden') {
   //   modal.classList.remove('hidden')
   //   // submit.setAttribute('class', 'visible')
