@@ -1,6 +1,7 @@
 const modalPopUp = document.querySelector('#label')
 const modal = document.querySelector('#select-modal')
 const closeB = document.querySelector('.show')
+const map = document.querySelector('#map');
 
 const submit = document.querySelector('#submit-btn')
 
@@ -288,6 +289,8 @@ console.log(previousArray)
   })
 
 
+  /* This helps access the information from the response's data into our modal */
+  /* Also opens the overlay and map within it */
   document.querySelector('#content-container').addEventListener('click', function(event) {
       if (event.target.tagName === 'H3') {
         console.log(event.target.getAttribute('data-jobid'))
@@ -296,22 +299,57 @@ console.log(previousArray)
           return  event.target.getAttribute('data-jobid') === result.MatchedObjectId;
         })
 
+        const jobTitleLocation = document.querySelector('#js-job-title');
+        const jobDescription = document.querySelector('#job-description-text')
+        const modal = document.querySelector('#select-modal')
+        const overlay = document.querySelector('#overlay')
+        const modalBody = document.querySelector('#modal-body');
+
+        modal.setAttribute('style', 'visibility: visible');
+        overlay.setAttribute('style', 'visibility: visible');
+
+        jobTitleLocation.textContent = job.MatchedObjectDescriptor.PositionTitle;
+        jobDescription.textContent = job.MatchedObjectDescriptor.UserArea.Details.JobSummary;
+      
+
+
         console.log(job);
         console.log(job.MatchedObjectDescriptor.PositionTitle)
         console.log(job.MatchedObjectDescriptor.UserArea.Details.JobSummary)
+        
 
-        var map = L.map('map').setView([job.MatchedObjectDescriptor.positionLocaation.Latitude, job.MatchedObjectDescriptor.positionLocaation.Latitude], 13);
+        /*
+        const createMap = document.createElement('div');
+        createMap.setAttribute('id', 'map');
+        modalBody.appendChild(createMap);
+        */
 
+        var map = L.map('map').setView([job.MatchedObjectDescriptor.PositionLocation[0].Latitude, job.MatchedObjectDescriptor.PositionLocation[0].Longitude], 13);
+
+        
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
 
+      var marker = L.marker([job.MatchedObjectDescriptor.PositionLocation[0].Latitude, job.MatchedObjectDescriptor.PositionLocation[0].Longitude]).addTo(map);
+      marker.bindPopup("<b>Job Location</b>").openPopup();
+
+
+
+
   }})
 
-  // var map = L.map('map').setView([var, var]), var);
+  document.querySelector('#modal-quit-button').addEventListener('click', function (event) {
+    const cancelBtn = document.querySelector('#modal-quit-button');
+    const modal = document.querySelector('#select-modal')
+    const overlay = document.querySelector('#overlay')
+    const map = document.querySelector('#map');
 
-  // var map = L.map('map').setView([51.505, -0.09], 13);
+    overlay.setAttribute('style', 'visibility: hidden')
+  })
+  
+
 
 
 
