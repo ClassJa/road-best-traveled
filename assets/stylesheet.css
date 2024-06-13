@@ -102,7 +102,16 @@ body {
     cursor: pointer;
 }
 
-#submit-btn, #clear-btn, #selects, #search-input {
+#prev-btn {
+    width: 75%;
+    height: 30px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    align-self: center;
+}
+
+#submit-btn, #clear-btn, #selects, #search-input, #prev-btn {
     border-radius: 5px;
     outline: none;
 }
