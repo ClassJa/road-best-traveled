@@ -108,7 +108,9 @@ body {
 }
 
 #select-modal {
+    position: fixed;
     visibility: hidden;
+    z-index: 10;
 }
 
 
@@ -131,6 +133,47 @@ body {
 
 #agencyDrop {
     width: 100%;
+}
+
+/* targets modal header */
+#js-job-header {
+    background-color: #A6D2EB;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+/* targets modal header text */
+#js-job-title {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+/* targets modal body */
+#modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: black;
+}
+
+#map {
+    margin-top: 15px;
+    border: 5px solid #A6D2EB
+}
+
+#overlay {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background-color: black;
+    z-index: 5;
 }
  
 /*added responsiveness */

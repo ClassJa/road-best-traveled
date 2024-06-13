@@ -1,6 +1,7 @@
 const modalPopUp = document.querySelector('#label')
 const modal = document.querySelector('#select-modal')
 const closeB = document.querySelector('.show')
+const map = document.querySelector('#map');
 
 const submit = document.querySelector('#submit-btn')
 
@@ -200,6 +201,8 @@ function getApi() {
   })
 
 
+  /* This helps access the information from the response's data into our modal */
+  /* Also opens the overlay and map within it */
   document.querySelector('#content-container').addEventListener('click', function(event) {
       if (event.target.tagName === 'H3') {
         console.log(event.target.getAttribute('data-jobid'))
@@ -211,8 +214,12 @@ function getApi() {
         const jobTitleLocation = document.querySelector('#js-job-title');
         const jobDescription = document.querySelector('#job-description-text')
         const modal = document.querySelector('#select-modal')
+        const overlay = document.querySelector('#overlay')
+        const modalBody = document.querySelector('#modal-body');
 
         modal.setAttribute('style', 'visibility: visible');
+        overlay.setAttribute('style', 'visibility: visible');
+
         jobTitleLocation.textContent = job.MatchedObjectDescriptor.PositionTitle;
         jobDescription.textContent = job.MatchedObjectDescriptor.UserArea.Details.JobSummary;
       
@@ -221,9 +228,15 @@ function getApi() {
         console.log(job);
         console.log(job.MatchedObjectDescriptor.PositionTitle)
         console.log(job.MatchedObjectDescriptor.UserArea.Details.JobSummary)
+        
+
+        /*
+        const createMap = document.createElement('div');
+        createMap.setAttribute('id', 'map');
+        modalBody.appendChild(createMap);
+        */
 
         var map = L.map('map').setView([job.MatchedObjectDescriptor.PositionLocation[0].Latitude, job.MatchedObjectDescriptor.PositionLocation[0].Longitude], 13);
-
 
         
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -231,16 +244,23 @@ function getApi() {
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
 
+      var marker = L.marker([job.MatchedObjectDescriptor.PositionLocation[0].Latitude, job.MatchedObjectDescriptor.PositionLocation[0].Longitude]).addTo(map);
+      marker.bindPopup("<b>Job Location</b>").openPopup();
+
+
+
+
   }})
 
-   // var map = L.map('map').setView([51.505, -0.09], 13);
+  document.querySelector('#modal-quit-button').addEventListener('click', function (event) {
+    const cancelBtn = document.querySelector('#modal-quit-button');
+    const modal = document.querySelector('#select-modal')
+    const overlay = document.querySelector('#overlay')
+    const map = document.querySelector('#map');
 
-   /*
-   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
-*/
+    overlay.setAttribute('style', 'visibility: hidden')
+  })
+  
 
 
 
