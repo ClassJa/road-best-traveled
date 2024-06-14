@@ -135,8 +135,7 @@ function getApi() {
       })
     
       .then((data) => {
-
-        resultArray.length = 0
+        contentEl.innerHTML=''
         resultArray.unshift(data.SearchResult.SearchResultItems);
         console.log(data);
         console.log(resultArray)
