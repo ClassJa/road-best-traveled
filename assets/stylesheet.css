@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family:'Times New Roman', Times, serif;
 }
 
 body {
@@ -73,7 +74,7 @@ body {
 
 #search-input {
     border: none;
-    height: 28px;
+    height: 30%;
     width: 100%;
 }
 
@@ -84,10 +85,13 @@ body {
 
 #button-fieldset {
     display: flex;
+    position: relative;
+    top: -20px;
 }
 
 #submit-btn {
     border: none;
+    border: 2px solid black;
     width: 100%;
     height: 35px;
     background-color: white;
@@ -98,15 +102,17 @@ body {
     width: 75%;
     height: 30px;
     border: none;
+    border: 2px solid black;
     background-color: white;
     cursor: pointer;
 }
 
 #prev-btn {
-    width: 75%;
-    height: 30px;
-    border: none;
-    background-color: white;
+    width: 100%;
+    height: 35px;
+    border: 2px solid black;
+    /* border-radius: 10px; */
+    background-color: rgb(255, 255, 255);
     cursor: pointer;
     align-self: center;
 }
@@ -114,6 +120,11 @@ body {
 #submit-btn, #clear-btn, #selects, #search-input, #prev-btn {
     border-radius: 5px;
     outline: none;
+}
+
+#search-input {
+    height: auto;
+
 }
 
 #select-modal {
