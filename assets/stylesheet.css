@@ -26,9 +26,8 @@ body {
     margin: 10px;
     border-radius: 5px;
     text-wrap: wrap;
-    width: 600px;
+    width: 95%;
     position: relative;
-    left: 20%;
     border: 2px solid #A6D2EB;
     /* overflow: auto; */
 
@@ -133,8 +132,18 @@ body {
     z-index: 10;
 }
 
+#content-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 
 #content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 85%;
     height: 520px;
     background-color: white;
