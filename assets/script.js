@@ -260,21 +260,27 @@ console.log(previousArray)
         console.log(data);
         console.log(resultArray)
       })
-
       .then(function(data) {
         contentEl.innerhtml='';
         for (let i = 0; i < resultArray[0].length; i++) {
           const result = resultArray[0][i]
       
-          const div = document.createElement('div');
+          // const div = document.createElement('div');
+          const div = document.createElement('button');
+          div.setAttribute('class', 'job-styling')
+
           const h3 =  document.createElement('h3');
+          h3.setAttribute('class', 'bold-letters')
           const location = document.createElement('p');
           
-          div.setAttribute("id", result.MatchedObjectId)
+
+          div.setAttribute("id", result)
+          h3.setAttribute('data-jobId', result.MatchedObjectId)
+
           h3.textContent = result.MatchedObjectDescriptor.PositionTitle
           location.textContent = result.MatchedObjectDescriptor.PositionLocationDisplay
-          h3.setAttribute('lat', result.MatchedObjectDescriptor.PositionLocation[0].Latitude)
-          h3.setAttribute('lon', result.MatchedObjectDescriptor.PositionLocation[0].Longitude)
+          location.setAttribute('lat', result.MatchedObjectDescriptor.PositionLocation[0].Latitude)
+          location.setAttribute('lon', result.MatchedObjectDescriptor.PositionLocation[0].Longitude)
         
           contentEl.appendChild(div)
           div.appendChild(h3)
@@ -283,10 +289,7 @@ console.log(previousArray)
     
       }
 
-    
-    getApi()
 
-  })
 
 
   /* This helps access the information from the response's data into our modal */
