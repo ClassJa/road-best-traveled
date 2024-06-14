@@ -20,7 +20,7 @@ body {
 
 .no-entry-style {
     position: relative;
-    top: 230px;
+    top: 50%;
     color: black;
     display: block;
     left: 45%;
