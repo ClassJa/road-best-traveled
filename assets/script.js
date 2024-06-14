@@ -230,12 +230,12 @@ function getApi() {
         console.log(job.MatchedObjectDescriptor.UserArea.Details.JobSummary)
         
 
-        /*
         const createMap = document.createElement('div');
         createMap.setAttribute('id', 'map');
         modalBody.appendChild(createMap);
-        */
 
+
+        
         var map = L.map('map').setView([job.MatchedObjectDescriptor.PositionLocation[0].Latitude, job.MatchedObjectDescriptor.PositionLocation[0].Longitude], 13);
 
         
@@ -257,6 +257,8 @@ function getApi() {
     const modal = document.querySelector('#select-modal')
     const overlay = document.querySelector('#overlay')
     const map = document.querySelector('#map');
+
+    map.remove();
 
     overlay.setAttribute('style', 'visibility: hidden')
   })
