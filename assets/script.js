@@ -145,11 +145,11 @@ function getApi() {
         if (resultArray[0].length === 0) {
           console.log("None")
           const div = document.createElement('div')
-          const h3 = document.createElement('h3')
-          h3.textContent = "No Entries Available"
+          const h2 = document.createElement('h2')
+          h2.textContent = "No Entries Available"
           div.setAttribute('class', 'no-entry-style')
           contentEl.appendChild(div)
-          div.appendChild(h3)
+          div.appendChild(h2)
       }})
     
 
