@@ -139,12 +139,28 @@ function getApi() {
         resultArray.unshift(data.SearchResult.SearchResultItems);
         console.log(data);
         console.log(resultArray)
-      })
+
+
+        if (resultArray[0].length === 0) {
+          console.log("None")
+          const div = document.createElement('div')
+          const h3 = document.createElement('h3')
+          h3.textContent = "No Entries Available"
+          div.setAttribute('class', 'no-entry-style')
+          contentEl.appendChild(div)
+          div.appendChild(h3)
+      }})
+    
 
       .then(function(data) {
         contentEl.innerhtml='';
+          
         for (let i = 0; i < resultArray[0].length; i++) {
           const result = resultArray[0][i]
+
+
+            // h3.textContent = result.MatchedObjectDescriptor.PositionTitle
+          // }
       
           // const div = document.createElement('div');
           const div = document.createElement('button');
@@ -158,7 +174,10 @@ function getApi() {
           div.setAttribute("id", result)
           h3.setAttribute('data-jobId', result.MatchedObjectId)
 
+
+          // console.log(result, typeof(result))
           h3.textContent = result.MatchedObjectDescriptor.PositionTitle
+
           location.textContent = result.MatchedObjectDescriptor.PositionLocationDisplay
           location.setAttribute('lat', result.MatchedObjectDescriptor.PositionLocation[0].Latitude)
           location.setAttribute('lon', result.MatchedObjectDescriptor.PositionLocation[0].Longitude)
@@ -166,6 +185,8 @@ function getApi() {
           contentEl.appendChild(div)
           div.appendChild(h3)
           div.appendChild(location)
+
+        
       }})
     
       }

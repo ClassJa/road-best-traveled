@@ -45,6 +45,14 @@ body {
     top: 80px;
 }
 
+.no-entry-style {
+    position: relative;
+    top: 50%;
+    color: black;
+    display: block;
+    left: 45%;
+}
+
 .job-styling {
     font-weight: 300;
     background-color: white;
@@ -53,13 +61,19 @@ body {
     display: block;
     margin: 10px;
     border-radius: 5px;
-    text-wrap: wrap;
-    width: 95%;
+    text-wrap: nowrap;
+    width: 800px;
     position: relative;
     border: 2px solid var(--bg-color-1);
     font-family: "Arimo", sans-serif;
     /* overflow: auto; */
 
+}
+
+@media screen and (max-width: 400px) {
+    .job-styling {
+        width: 290px;
+    }
 }
 
 .bold-letters {
@@ -114,6 +128,7 @@ body {
 #selects {
     border: none;
     height: 28px;
+    outline: none;
 }
 
 #button-fieldset {
