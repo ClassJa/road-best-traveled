@@ -135,17 +135,32 @@ function getApi() {
       })
     
       .then((data) => {
-
-        resultArray.length = 0
+        contentEl.innerHTML=''
         resultArray.unshift(data.SearchResult.SearchResultItems);
         console.log(data);
         console.log(resultArray)
-      })
+
+
+        if (resultArray[0].length === 0) {
+          console.log("None")
+          const div = document.createElement('div')
+          const h2 = document.createElement('h2')
+          h2.textContent = "No Entries Available"
+          div.setAttribute('class', 'no-entry-style')
+          contentEl.appendChild(div)
+          div.appendChild(h2)
+      }})
+    
 
       .then(function(data) {
         contentEl.innerhtml='';
+          
         for (let i = 0; i < resultArray[0].length; i++) {
           const result = resultArray[0][i]
+
+
+            // h3.textContent = result.MatchedObjectDescriptor.PositionTitle
+          // }
       
           // const div = document.createElement('div');
           const div = document.createElement('button');
@@ -159,7 +174,10 @@ function getApi() {
           div.setAttribute("id", result)
           h3.setAttribute('data-jobId', result.MatchedObjectId)
 
+
+          // console.log(result, typeof(result))
           h3.textContent = result.MatchedObjectDescriptor.PositionTitle
+
           location.textContent = result.MatchedObjectDescriptor.PositionLocationDisplay
           location.setAttribute('lat', result.MatchedObjectDescriptor.PositionLocation[0].Latitude)
           location.setAttribute('lon', result.MatchedObjectDescriptor.PositionLocation[0].Longitude)
@@ -167,6 +185,8 @@ function getApi() {
           contentEl.appendChild(div)
           div.appendChild(h3)
           div.appendChild(location)
+
+        
       }})
     
       }
@@ -321,12 +341,12 @@ console.log(previousArray)
         console.log(job.MatchedObjectDescriptor.UserArea.Details.JobSummary)
         
 
-        /*
         const createMap = document.createElement('div');
         createMap.setAttribute('id', 'map');
         modalBody.appendChild(createMap);
-        */
 
+
+        
         var map = L.map('map').setView([job.MatchedObjectDescriptor.PositionLocation[0].Latitude, job.MatchedObjectDescriptor.PositionLocation[0].Longitude], 13);
 
         
@@ -348,6 +368,8 @@ console.log(previousArray)
     const modal = document.querySelector('#select-modal')
     const overlay = document.querySelector('#overlay')
     const map = document.querySelector('#map');
+
+    map.remove();
 
     overlay.setAttribute('style', 'visibility: hidden')
   })

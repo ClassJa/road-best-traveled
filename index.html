@@ -7,6 +7,14 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
         crossorigin=""/>
+
+        <!-- google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kaushan+Script&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playball&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kaushan+Script&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playball&display=swap" rel="stylesheet">
+
+
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
@@ -27,21 +35,23 @@
                 <form id="form-main" class="justify-between flex-col ml-12 p-5">
                     <fieldset class="flex-col">
                         <label for="search-input" id="labelOne" class="text-2xl mb-3">Search</label>
-                        <input type="text" id="search-input" class="mb-8 pl-2">
-                        <label for="selects" id="label2Two" class="text-lg mb-3">Select Agency</label>
+                        <input type="text" id="search-input" class="mb-8 pl-2" placeholder="&#x1F50D;">
+
+                        <button type="button" id="prev-btn" class="text-2xl mb-6 hover:opacity-80">Previous Search</button>
+                        <label for="selects" id="label2Two" class="text-2xl mb-3">Select Agency</label>
                         <select id="agencyDrop" class="mb-9 selects">
                             <option>Select Agency</option>
                         </select>
 
-                        <label for="selects" id="labelThree" class="text-lg mb-3">Job Type</label>
+                        <label for="selects" id="labelThree" class="text-2xl mb-3">Job Type</label>
                         <select id="typeDrop" class="mb-9">
                             <option>Select Job Type</option>
                         </select>
-                        <button type="button" id="prev-btn" class="text-2xl mb-6 hover:opacity-80">Previous Search</button>
+                        <!-- <button type="button" id="prev-btn" class="text-2xl mb-6 hover:opacity-80">Previous Search</button> -->
                     </fieldset>
     
                     <fieldset id="button-fieldset" class="flex-col items-center ">
-                        <button type="button" id="submit-btn" class="text-2xl mb-6 hover:opacity-80">submit</button>
+                        <button type="button" id="submit-btn" class="text-2xl mb-6 hover:opacity-80">Submit</button>
                         <button id="clear-btn" class="text-lg hover:opacity-80">Clear</button>
                     </fieldset>
                 </form>
@@ -85,8 +95,6 @@
               <div id="modal-body" class="p-4 md:p-5">
                   <p class="text-gray-500 dark:text-gray-400 mb-4">Job Description:</p>
                   <p id="job-description-text"></p>
-                  <div id="map"></div>
-
 
                   <!-- <ul class="space-y-4 mb-4">
                       <li>

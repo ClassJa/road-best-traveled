@@ -1,6 +1,34 @@
+:root {
+    --bg-color-1: #A6D2EB;
+    --bg-color-2: #6497b1;
+    --bg-color-3: #005b96;
+    --bg-color-4: #03396c;
+    --bg-color-5: #011f4b;
+}
+
+.philosopher-regular {
+  font-family: "Philosopher", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.playball-regular {
+    font-family: "Playball", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .arimo-name {
+    font-family: "Arimo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+  }
+  
+
 * {
     margin: 0;
-    padding: 0;
+    padding: 0;    
 }
 
 body {
@@ -16,21 +44,34 @@ body {
     left: 300px;
     top: 80px;
 }
+
+.no-entry-style {
+    position: relative;
+    top: 50%;
+    color: black;
+}
+
 .job-styling {
     font-weight: 300;
-    background-color: rgb(214, 214, 214);
+    background-color: white;
     color: black;
     border-bottom: 10px;
     display: block;
     margin: 10px;
     border-radius: 5px;
-    text-wrap: wrap;
-    width: 600px;
+    text-wrap: nowrap;
+    width: 800px;
     position: relative;
-    left: 20%;
-    border: 2px solid #A6D2EB;
+    border: 2px solid var(--bg-color-1);
+    font-family: "Arimo", sans-serif;
     /* overflow: auto; */
 
+}
+
+@media screen and (max-width: 400px) {
+    .job-styling {
+        width: 290px;
+    }
 }
 
 .bold-letters {
@@ -47,11 +88,14 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
 }
+
 #main-header {
     display: flex;
-    color: white;
-    background-color: #A6D2EB;
+    color: rgb(0, 0, 0);
+    background: linear-gradient(var(--bg-color-1), var(--bg-color-2));
+    border-bottom: 3px solid var(--bg-color-3);
     height: 70px;
+    font-family: "Playball", cursive;
 }
 
 #main {
@@ -60,10 +104,12 @@ body {
 }
 
 #form-main {
+    font-family: "Philosopher", sans-serif;
     display: flex;
     width: 250px;
     height: 520px;
     background-color: #A6D2EB;
+    box-shadow: 0 0 8px inset var(--bg-color-2);
 }
 
 #form-main fieldset {
@@ -73,47 +119,93 @@ body {
 
 #search-input {
     border: none;
-    height: 28px;
+    height: 30%;
     width: 100%;
 }
 
 #selects {
     border: none;
     height: 28px;
+    outline: none;
 }
 
 #button-fieldset {
     display: flex;
+    position: relative;
+    top: -20px;
 }
 
 #submit-btn {
     border: none;
     width: 100%;
     height: 35px;
-    background-color: white;
     cursor: pointer;
+
+    background-image: linear-gradient(to right, var(--bg-color-3) 40%, white 60%);
+    background-size: 300% 100%;
+    background-position: 100%;
+    transition: background-position 1s,
+    color 1s,
+    box-shadow 0.5s;
+}
+
+#submit-btn:hover {
+    background-position: 0%;
+    color: white;
+    box-shadow: 0 0 5px 5px var(--bg-color-1);
 }
 
 #clear-btn {
     width: 75%;
     height: 30px;
     border: none;
-    background-color: white;
     cursor: pointer;
+
+    background-image: linear-gradient(to right, var(--bg-color-3) 40%, white 60%);
+    background-size: 300% 100%;
+    background-position: 100%;
+    transition: background-position 1s,
+    color 1s,
+    box-shadow 0.5s;
 }
 
+#clear-btn:hover {
+    background-position: 0%;
+    color: white;
+    box-shadow: 0 0 5px 5px var(--bg-color-1);
+}
+
+
 #prev-btn {
-    width: 75%;
-    height: 30px;
-    border: none;
+    width: 100%;
+    height: 35px;
+    /* border-radius: 10px; */
     background-color: white;
     cursor: pointer;
     align-self: center;
+
+    background-image: linear-gradient(to right, var(--bg-color-3) 40%, white 60%);
+    background-size: 300% 100%;
+    background-position: 100%;
+    transition: background-position 1s,
+    color 1s,
+    box-shadow 0.5s;
+}
+
+#prev-btn:hover {
+    background-position: 0%;
+    color: white;
+    box-shadow: 0 0 5px 5px var(--bg-color-1);
 }
 
 #submit-btn, #clear-btn, #selects, #search-input, #prev-btn {
     border-radius: 5px;
     outline: none;
+}
+
+#search-input {
+    height: auto;
+
 }
 
 #select-modal {
@@ -122,12 +214,23 @@ body {
     z-index: 10;
 }
 
+#content-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 
 #content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 85%;
     height: 520px;
-    background-color: white;
-    border: solid 10px #A6D2EB;
+    background-color: var(--bg-color-2);
+    border: solid 10px var(--bg-color-1);
+    box-shadow: 0 0 15px inset var(--bg-color-3);
 }
 
 #footer {
@@ -136,7 +239,8 @@ body {
     top: 100%;
     order: 5;
     color: white;
-    background-color: #A6D2EB;
+    background: linear-gradient(var(--bg-color-2), var(--bg-color-1));
+    border-top: 3px solid var(--bg-color-3);
     height: 140px;
 }
 
