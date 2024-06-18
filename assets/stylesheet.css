@@ -40,11 +40,6 @@ body {
     width: 300px
 }
 
-.relative {
-    left: 300px;
-    top: 80px;
-}
-
 .no-entry-style {
     position: relative;
     top: 50%;
@@ -210,8 +205,12 @@ body {
 
 #select-modal {
     position: fixed;
+    display: flex;
     visibility: hidden;
     z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+
 }
 
 #content-list {
@@ -308,5 +307,14 @@ body {
     #main-header {
         padding: 0;
         justify-content: center;
+    }
+    .relative {
+        top: -25px;
+    }
+    #overlay {
+        height: 201%;
+    }
+    #js-job-title {
+        margin-top: 25px;
     }
 }
