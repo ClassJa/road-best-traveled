@@ -71,6 +71,7 @@ body {
 @media screen and (max-width: 400px) {
     .job-styling {
         width: 290px;
+        text-wrap: wrap;
     }
 }
 
