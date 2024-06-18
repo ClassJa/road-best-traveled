@@ -68,12 +68,20 @@ body {
 
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 415px) {
     .job-styling {
         width: 290px;
         text-wrap: wrap;
+
     }
 }
+
+/* @media screen and (max-width: 400px) {
+    .bold-letters {
+        text-wrap: wrap;
+    }
+    
+} */
 
 .bold-letters {
     font-weight: bold;
